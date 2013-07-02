@@ -5,6 +5,7 @@ This is the framework for a Sugar Activity.  Everything needed to quickly start 
 Credit fot this repo is given to Robin Brooke. His blog: http://rbrooke.blogspot.com/2010/01/creating-xo-file.html
 **NOTE: you do not NEED to create a MANIFEST file. It is not integral to the sugar XO.
 
+
 Included in this QuickStart:
 
 	-activity directory (folder)
@@ -24,29 +25,34 @@ Files needed:
 1.)Activity.py
 
 -Needs to be coded in python
--Needs to be placed into a class structure
+-Needs to be placed into a class structure (your activity will not function correctly if it isn't contained within a class)
+		
+		class exampleActivity(activity.Activity):
+		
+			def __init__(self, handle):
 
 2.)Icon 
 
 	-Needs to be an .svg (scalable vector graphic) file format
-	-Inkscape is a wonderful program to make svg's and choose it's icon_48x48 pxls
+	-Inkscape is a wonderful program to make svg's and choose it's icon_48x48 pxls (RECOMMEND THIS SOFTWARE)
+	-Inkscape also makes the process of adjusting 
 	
 	-included code:
 	
-		PART ONE:
+		PART ONE: Add this code to the svg in any text editor
 		
-			Before:
+			Before:--------------------------------
 			<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 			<!-- Created with Inkscape (http://www.inkscape.org/) -->
 		
-			After:
+			After:---------------------------------
 			<?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd' 
 			[<!ENTITY stroke_color "#000000">
 			<!ENTITY fill_color "#FFFFFF">]><svg
 
 		Part TWO:
 		
-			Before:
+			Before:--------------------------------
 			<rect
 			style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
 			id="rect904"
@@ -55,7 +61,7 @@ Files needed:
 			x="4.1428571"
 			y="7.1428571" />
 			
-			After:
+			After:---------------------------------
 			<rect
 			style="fill:&fill_color;;stroke:&stroke_color;;stroke-opacity:1"
 			id="rect904"
@@ -69,7 +75,6 @@ Files needed:
 		-Once your icon is finished, load it into any text editor and edit the above lines
 		-In the body of the file, change the references to FILL and STROKE within 
 		 the attribute STYLE
-		 -
 		
 
 
@@ -107,6 +112,11 @@ Files needed:
 	
 	license : A license tells people what they can and can't do with a program.  
 			  GPLv2+ is a popular standard license.
+			  
+	TroubleShooting:
+		-If your xo activity icon doesn't display correctly, the problem lies within your activity.info file.  
+		-Your icon should not have the .svg after the file name. You only need the file name.
+		-If you are working on an older version of an activity, make sure that the values are correctly named (class = exec, etc..)
 
 4.)setup.py file
 
