@@ -18,18 +18,19 @@ NEED to create a MANIFEST file. It is not integral to the sugar XO.
     -activity.py (this is empty)
 
 <h2>What is not included in this Quickstart(you make these):</h2>
- - icon.svg
- - an actvity.py file
- - a dist folder with a .xo file
+    - icon.svg
+    - an actvity.py file
+    - a dist folder with a .xo file
 
 <h2>Files needed:</h2>
 
 <h3>1.) Activity.py</h3>
- - Needs to be coded in python
- - Needs to be placed into a class structure (your activity will not function
-   correctly if it isn't contained within a class)
-    'class exampleActivity(activity.Activity):
-     def __init__(self, handle):'
+
+    - Needs to be coded in python
+    - Needs to be placed into a class structure (your activity will not
+      function correctly if it isn't contained within a class)
+      class exampleActivity(activity.Activity):
+           def __init__(self, handle):
 
 
 <h3>2.) Icon</h3> 
@@ -150,10 +151,12 @@ NEED to create a MANIFEST file. It is not integral to the sugar XO.
         
     Explanation:
 
-    a.) The activity needs to be installed. This method creates a symbolic link within the OLPC.  A symbolic link is a 
-    way of make a directory or file appear to be located in two places without having to copy it.
+    a.) The activity needs to be installed. This method creates a symbolic link
+        within the OLPC.  A symbolic link is a way of make a directory or file
+        appear to be located in two places without having to copy it.
 
-    b.) This will create the xo file and place it in a new folder called dist in the Activity directory
+    b.) This will create the xo file and place it in a new folder called dist
+        in the Activity directory
     
     
 <h2>2.) Method 2 (in linux):</h2>
@@ -166,7 +169,8 @@ NEED to create a MANIFEST file. It is not integral to the sugar XO.
         
         python setup.py dist_xo
         
-    c.) Pull .xo file out of the dist folder you just created and place it onto a flash drive.
+    c.) Pull .xo file out of the dist folder you just created and place it onto
+        a flash drive.
     
     d.) Copy the .xo file from the flash drive into the Journal of the OLPC
             
@@ -174,8 +178,10 @@ NEED to create a MANIFEST file. It is not integral to the sugar XO.
 
     Explanation:
     a.) Same explanation as above.
-    b.) Creates a 'dist' folder containing the .xo file within your activity folder.
+    b.) Creates a 'dist' folder containing the .xo file within your activity
+        folder.
     c.) Instructions on how to get the .xo file onto the sugar OLPC
     d.) The activity should now show up in the journal and on the home circle.
-    **NOTE: If your activity icon doesn't load correctly, there is something wrong with your activity.info file.
-            Please check to make sure each of your values are complete and correct.
+    **NOTE: If your activity icon doesn't load correctly, there is something
+            wrong with your activity.info file. Please check to make sure each
+            of your values are complete and correct.
