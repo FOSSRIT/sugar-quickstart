@@ -24,6 +24,7 @@ What is not included in this Quickstart(you make these):
 
 Files needed:
 -------------
+
 1.) Activity.py
 ~~~~~~~~~~~~~~~
 
@@ -42,7 +43,6 @@ Files needed:
  - Inkscape is a wonderful program to make svg's and choose it's icon_48x48
    pxls (RECOMMEND THIS SOFTWARE)
  - Inkscape also makes the process of adjusting 
-
  - included code:
 
 
@@ -77,10 +77,10 @@ Files needed:
         x="4.1428571"
         y="7.1428571" />
 
-    Explanation:
-        -Once your icon is finished, load it into any text editor and edit the above lines
-        -In the body of the file, change the references to FILL and STROKE within 
-         the attribute STYLE
+Explanation:
+    - Once your icon is finished, load it into any text editor and edit the above lines
+    - In the body of the file, change the references to FILL and STROKE within 
+      the attribute STYLE
 
 
 3.) activity.info 
