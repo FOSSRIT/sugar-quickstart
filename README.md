@@ -27,13 +27,10 @@ Files needed:
 
 1.) Activity.py
 ~~~~~~~~~~~~~~~
-
  - Needs to be coded in python
  - Needs to be placed into a class structure (your activity will not function
    correctly if it isn't contained within a class)
- 
          class exampleActivity(activity.Activity):
- 
              def __init__(self, handle):
 
 
