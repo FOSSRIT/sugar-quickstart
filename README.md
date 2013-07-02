@@ -1,11 +1,13 @@
 <h1>Sugar_Activity_QuickStart</h1>
 
 <p>
-This is the framework for a Sugar Activity.  Everything needed to quickly
-start an activity for the Sugar OLPC XO.\ Credit fot this repo is given to
-Robin Brooke. His blog:
-http://rbrooke.blogspot.com/2010/01/creating-xo-file.html **NOTE: you do not
-NEED to create a MANIFEST file. It is not integral to the sugar XO.
+This is the framework for a Sugar Activity. Everything needed to quickly
+start an activity for the Sugar OLPC XO. Credit for this repo is given to
+Robin Brooke, whose blog can be found 
+<a target="_blank"
+href="http://rbrooke.blogspot.com/2010/01/creating-xo-file.html"> here</a>
+**NOTE: you do not
+NEED to create a MANIFEST file. It is not integral to the sugar XO.**
 </p>
 
 
