@@ -28,16 +28,16 @@ NEED to create a MANIFEST file. It is not integral to the sugar XO.
  - Needs to be coded in python
  - Needs to be placed into a class structure (your activity will not function
    correctly if it isn't contained within a class)
-         class exampleActivity(activity.Activity):
-             def __init__(self, handle):
+    'class exampleActivity(activity.Activity):
+     def __init__(self, handle):'
 
 
 <h3>2.) Icon</h3> 
- - Needs to be an .svg (scalable vector graphic) file format
- - Inkscape is a wonderful program to make svg's and choose it's icon_48x48
-   pxls (RECOMMEND THIS SOFTWARE)
- - Inkscape also makes the process of adjusting 
- - included code:
+    - Needs to be an .svg (scalable vector graphic) file format
+    - Inkscape is a wonderful program to make svg's and choose it's icon_48x48
+      pxls (RECOMMEND THIS SOFTWARE)
+    - Inkscape also makes the process of adjusting 
+    - included code:
 
 
     PART ONE: Add this code to the svg in any text editor
@@ -71,17 +71,16 @@ NEED to create a MANIFEST file. It is not integral to the sugar XO.
         x="4.1428571"
         y="7.1428571" />
 
-Explanation:
-    - Once your icon is finished, load it into any text editor and edit the above lines
-    - In the body of the file, change the references to FILL and STROKE within 
-      the attribute STYLE
+    Explanation:
+        - Once your icon is finished, load it into any text editor and edit the above lines
+        - In the body of the file, change the references to FILL and STROKE within 
+          the attribute STYLE
 
 
-3.) activity.info 
+<h3>3.) activity.info</h3> 
 
-    -Contains all the file linkage that the OLPC XO needs to run your activity
-
-    -included code:
+    - Contains all the file linkage that the OLPC XO needs to run your activity
+    - included code:
 
         [Activity]
         name = (name of your activity)
@@ -93,57 +92,52 @@ Explanation:
         license = GPLv2+
 
     Explanation:
+        name : The name of the activity as the user sees it
 
-    name : The name of the activity as the user sees it
+        bundle_id : A unique name that Sugar uses to refer to your activity. 
+                    The journal also stores this name in the metadata of your 
+                    activity entry, so you can resume this activity from the
+                    entry.
 
-    bundle_id : A unique name that Sugar uses to refer to your activity. 
-                The journal also stores this name in the metadata of your 
-                activity entry, so you can resume this activity from the entry.
+        icon : The name of your icon. It must be an svg file.  example:
+               "myicon.svg"
 
-    icon : The name of your icon. It must be an svg file.  example: "myicon.svg"
+        exec : Tells Sugar how to launch your Activity. It tells sugar to
+               create an instance of the class exampleActivity which it finds
+               in the exampleActivity.py
 
-    exec : Tells Sugar how to launch your Activity. It tells sugar to create an
-           instance of the class exampleActivity which it finds in the
-           exampleActivity.py
-    
-    show_launcher :  The first is to click on the icon in the Activity view.
-    The second is to resume an entry in the journal.
-    
-    activity_version : An integer that displays what iteration your activity is.
-    
-    license : A license tells people what they can and can't do with a program.  
-              GPLv2+ is a popular standard license.
-              
+        show_launcher :  The first is to click on the icon in the Activity
+                         view. The second is to resume an entry in the journal.
+
+        activity_version : An integer that displays what iteration your
+                           activity is.
+
+        license : A license tells people what they can and can't do with a
+                  program. GPLv2+ is a popular standard license.
+
     TroubleShooting:
         - If your xo activity icon doesn't display correctly, the problem lies
-        within your activity.info file.  
+          within your activity.info file.
         - Your icon should not have the .svg after the file name. You only need
-        the file name.
+          the file name.
         - If you are working on an older version of an activity, make sure that
-        the values are correctly named (class = exec, etc..)
+          the values are correctly named (class = exec, etc..)
 
-4.) setup.py file
-~~~~~~~~~~~~~~~~~
+<h3>3.) setup.py file</h3>
 
-    -This file runs to build the .xo file that the OLPC needs to run.
-
-    -included code:
-
+    - This file runs to build the .xo file that the OLPC needs to run.
+    - included code:
         from sugar.activity import bundlebuilder
         bundlebuilder.start()
 
 
-5.) activity directory
-~~~~~~~~~~~~~~~~~~~~~~
-
+<h3>5.) activity directory</h3>
     -This folder will hold your activity.info file and your icon.svg
 
 
-How to build a sugar XO:
-========================
+<h1>How to build a sugar XO:</h1>
 
-1.) Method 1:
--------------
+<h2>1.) Method 1:</h2>
 
     a.) In home/Activities/example, type:
 
@@ -162,8 +156,7 @@ How to build a sugar XO:
     b.) This will create the xo file and place it in a new folder called dist in the Activity directory
     
     
-2.) Method 2 (in linux):
-------------------------
+<h2>2.) Method 2 (in linux):</h2>
 
     a.) Open a terminal and navigate to your activity folder, type:
         
@@ -186,4 +179,3 @@ How to build a sugar XO:
     d.) The activity should now show up in the journal and on the home circle.
     **NOTE: If your activity icon doesn't load correctly, there is something wrong with your activity.info file.
             Please check to make sure each of your values are complete and correct.
-            
