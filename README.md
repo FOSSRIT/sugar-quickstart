@@ -45,7 +45,6 @@ Files needed:
 
  - included code:
 
-.. code-block:: xml
 
     PART ONE: Add this code to the svg in any text editor
 
@@ -100,7 +99,7 @@ Files needed:
         license = GPLv2+
 
     Explanation:
-    ~~~~~~~~~~~~
+
     name : The name of the activity as the user sees it
 
     bundle_id : A unique name that Sugar uses to refer to your activity. 
@@ -130,6 +129,7 @@ Files needed:
         the values are correctly named (class = exec, etc..)
 
 4.) setup.py file
+~~~~~~~~~~~~~~~~~
 
     -This file runs to build the .xo file that the OLPC needs to run.
 
@@ -140,6 +140,7 @@ Files needed:
 
 
 5.) activity directory
+~~~~~~~~~~~~~~~~~~~~~~
 
     -This folder will hold your activity.info file and your icon.svg
 
@@ -160,10 +161,11 @@ How to build a sugar XO:
         
         
     Explanation:
-    ~~~~~~~~~~~~
-    a.)-The activity needs to be installed. This method creates a symbolic link within the OLPC.  A symbolic link is a 
+
+    a.) The activity needs to be installed. This method creates a symbolic link within the OLPC.  A symbolic link is a 
     way of make a directory or file appear to be located in two places without having to copy it.
-    b.)-This will create the xo file and place it in a new folder called dist in the Activity directory
+
+    b.) This will create the xo file and place it in a new folder called dist in the Activity directory
     
     
 2.) Method 2 (in linux):
@@ -184,11 +186,10 @@ How to build a sugar XO:
     
 
     Explanation:
-    ~~~~~~~~~~~~
-    a.)- Same explanation as above.
-    b.)- Creates a 'dist' folder containing the .xo file within your activity folder.
-    c.)- Instructions on how to get the .xo file onto the sugar OLPC
-    d.)- The activity should now show up in the journal and on the home circle.
+    a.) Same explanation as above.
+    b.) Creates a 'dist' folder containing the .xo file within your activity folder.
+    c.) Instructions on how to get the .xo file onto the sugar OLPC
+    d.) The activity should now show up in the journal and on the home circle.
     **NOTE: If your activity icon doesn't load correctly, there is something wrong with your activity.info file.
             Please check to make sure each of your values are complete and correct.
             
