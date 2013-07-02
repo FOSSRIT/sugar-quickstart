@@ -28,18 +28,17 @@ Files needed:
 1.) Activity.py
 ~~~~~~~~~~~~~~~
 
-- Needs to be coded in python
-- Needs to be placed into a class structure (your activity will not function
-  correctly if it isn't contained within a class)
-
-        class exampleActivity(activity.Activity):
-
-            def __init__(self, handle):
+ - Needs to be coded in python
+ - Needs to be placed into a class structure (your activity will not function
+   correctly if it isn't contained within a class)
+ 
+         class exampleActivity(activity.Activity):
+ 
+             def __init__(self, handle):
 
 
 2.) Icon 
 ~~~~~~~~
-
  - Needs to be an .svg (scalable vector graphic) file format
  - Inkscape is a wonderful program to make svg's and choose it's icon_48x48
    pxls (RECOMMEND THIS SOFTWARE)
