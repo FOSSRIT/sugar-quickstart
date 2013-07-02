@@ -1,32 +1,30 @@
-Sugar_Activity_QuickStart
-=========================
+<h1>Sugar_Activity_QuickStart</h1>
 
-This is the framework for a Sugar Activity.  Everything needed to quickly start an activity for the Sugar OLPC XO.\
-Credit fot this repo is given to Robin Brooke. His blog: http://rbrooke.blogspot.com/2010/01/creating-xo-file.html
-**NOTE: you do not NEED to create a MANIFEST file. It is not integral to the sugar XO.
+<p>
+This is the framework for a Sugar Activity.  Everything needed to quickly
+start an activity for the Sugar OLPC XO.\ Credit fot this repo is given to
+Robin Brooke. His blog:
+http://rbrooke.blogspot.com/2010/01/creating-xo-file.html **NOTE: you do not
+NEED to create a MANIFEST file. It is not integral to the sugar XO.
+</p>
 
 
-Included in this QuickStart:
-----------------------------
+<h2>Included in this QuickStart:</h2>
 
     -activity directory (folder)
         -activity.info
     -setup.py
     -README.md (this file)
     -activity.py (this is empty)
-    
-What is not included in this Quickstart(you make these):
-    -icon.svg
-    -an actvity.py file
-    -a dist folder with a .xo file
 
+<h2>What is not included in this Quickstart(you make these):</h2>
+ - icon.svg
+ - an actvity.py file
+ - a dist folder with a .xo file
 
+<h2>Files needed:</h2>
 
-Files needed:
--------------
-
-1.) Activity.py
-~~~~~~~~~~~~~~~
+<h3>1.) Activity.py</h3>
  - Needs to be coded in python
  - Needs to be placed into a class structure (your activity will not function
    correctly if it isn't contained within a class)
@@ -34,8 +32,7 @@ Files needed:
              def __init__(self, handle):
 
 
-2.) Icon 
-~~~~~~~~
+<h3>2.) Icon</h3> 
  - Needs to be an .svg (scalable vector graphic) file format
  - Inkscape is a wonderful program to make svg's and choose it's icon_48x48
    pxls (RECOMMEND THIS SOFTWARE)
