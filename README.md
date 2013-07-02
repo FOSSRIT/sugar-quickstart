@@ -6,7 +6,8 @@ start an activity for the Sugar OLPC XO. Credit for this repo is given to
 Robin Brooke, whose blog can be found here:
 <a target="_blank"
 href="http://rbrooke.blogspot.com/2010/01/creating-xo-file.html"></a>
-<br/>http://rbrooke.blogspot.com/2010/01/creating-xo-file.html
+<br/>
+<br/>
 **NOTE: you do not
 NEED to create a MANIFEST file. It is not integral to the sugar XO.**
 </p>
