@@ -3,9 +3,10 @@
 <p>
 This is the framework for a Sugar Activity. Everything needed to quickly
 start an activity for the Sugar OLPC XO. Credit for this repo is given to
-Robin Brooke, whose blog can be found 
+Robin Brooke, whose blog can be found here:
 <a target="_blank"
-href="http://rbrooke.blogspot.com/2010/01/creating-xo-file.html"> here</a>
+href="http://rbrooke.blogspot.com/2010/01/creating-xo-file.html">http://rbrooke.blogspot.com/2010/01/creating-xo-file.html</a>
+<br/>
 **NOTE: you do not
 NEED to create a MANIFEST file. It is not integral to the sugar XO.**
 </p>
@@ -19,7 +20,7 @@ NEED to create a MANIFEST file. It is not integral to the sugar XO.**
     -README.md (this file)
     -activity.py (this is empty)
 
-<h2>What is not included in this Quickstart(you make these):</h2>
+<h2>What is not included in this Quickstart (you will need to make these):</h2>
     - icon.svg
     - an actvity.py file
     - a dist folder with a .xo file
