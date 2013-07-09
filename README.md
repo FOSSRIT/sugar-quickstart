@@ -108,7 +108,7 @@ sugar XO.**
 
         exec : Tells Sugar how to launch your Activity. It tells sugar to
                create an instance of the class exampleActivity which it finds
-               in the exampleActivity.py
+               in the exampleActivity.py (filename.activityclass) 
 
         show_launcher :  The first is to click on the icon in the Activity
                          view. The second is to resume an entry in the journal.
