@@ -35,6 +35,11 @@ sugar XO.**
       class exampleActivity(activity.Activity):
            def __init__(self, handle):
 
+    - Known bug: Once contained within a class, the activity will not run on a regular 
+                 computer. To develope I recommend two approaches:
+                 1 Make a separate PC file to develop, then merge to the .XO file
+                 2 Compile a new .XO file each time you want to test your code for the OLPC
+
 
 <h3>2.) Icon</h3> 
     - Needs to be an .svg (scalable vector graphic) file format
