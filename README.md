@@ -1,195 +1,238 @@
-<h1>Sugar_Activity_QuickStart</h1>
 
-<p>
-This is the framework for a Sugar Activity. Everything needed to quickly
-start an activity for the Sugar OLPC XO. Credit for this repo is given to
-Robin Brooke, whose blog can be found here:
-<a target="_blank"
-href="http://rbrooke.blogspot.com/2010/01/creating-xo-file.html">http://rbrooke.blogspot.com/2010/01/creating-xo-file.html</a>
-<br/>
-**NOTE: you do not NEED to create a MANIFEST file. It is not integral to the
-sugar XO.**
-</p>
+# Sugar_Activity_Quickstart
 
+This is the framework for a Sugar Activity. Everything needed to quickly start an activity for the Sugar OLPC XO. Credit for this repo is given to Robin Brooke, whose blog can be found [here: http://rbrooke.blogspot.com/2010/01/creating-xo-file.html](http://rbrooke.blogspot.com/2010/01/creating-xo-file.html)
 
-<h2>Included in this QuickStart:</h2>
+**NOTE: The latest Sugar (since the Gtk3 migration) now ignores MANIFEST files, don't create one.**
 
-    -activity directory (folder)
-        -activity.info
-    -setup.py
-    -README.md (this file)
-    -activity.py (this is empty)
+## Table of Contents
 
-<h2>What is not included in this Quickstart (you will need to make these):</h2>
-    - icon.svg
-    - an actvity.py file
-    - a dist folder with a .xo file
-
-<h2>Files needed:</h2>
-
-<h3>1.) Activity.py</h3>
-
-    - Needs to be coded in python
-    - Needs to be placed into a class structure (your activity will not
-      function correctly if it isn't contained within a class)
-      class exampleActivity(activity.Activity):
-           def __init__(self, handle):
-
-    - Known bug: Once contained within a class, the activity will not run on a regular 
-                 computer. To develope I recommend two approaches:
-                 1 Make a separate PC file to develop, then merge to the .XO file
-                 2 Compile a new .XO file each time you want to test your code for the OLPC
+- File Hierarchy
+    - What is included
+    - Description of Project Files
+- Building & Distributing
+- GTK and Interfaces
+- Multi-Lingual Development
+- Example Activity
 
 
-<h3>2.) Icon</h3> 
-    - Needs to be an .svg (scalable vector graphic) file format
-    - Inkscape is a wonderful program to make svg's and choose it's icon_48x48
-      pxls (RECOMMEND THIS SOFTWARE)
-    - Inkscape also makes the process of adjusting 
-    - included code:
+## File Hierarchy
+
+A basic bare-minimum Sugar Activity will consist of these files:
+
+- activity/
+    - activity.info
+    - activity-icon.svg
+- activity.py
+- setup.py
+
+_This activity does not include an `activity-icon.svg`.  You must build (or extend) the `activity.py` file.  Changes to the `activity.py` file must be accomodated by changes to the `activity.info`.  You will use the `setup.py` file to create a `.xo` file later._
 
 
-    PART ONE: Add this code to the svg in any text editor
+### Included in This QuickStart
 
-        Before:--------------------------------
-        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-        <!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-        After:---------------------------------
-        <?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd' 
-        [<!ENTITY stroke_color "#000000">
-        <!ENTITY fill_color "#FFFFFF">]><svg
-
-    Part TWO:
-
-        Before:--------------------------------
-        <rect
-        style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
-        id="rect904"
-        width="36.142857"
-        height="32.142857"
-        x="4.1428571"
-        y="7.1428571" />
-
-        After:---------------------------------
-        <rect
-        style="fill:&fill_color;;stroke:&stroke_color;;stroke-opacity:1"
-        id="rect904"
-        width="36.142857"
-        height="32.142857"
-        x="4.1428571"
-        y="7.1428571" />
-
-    Explanation:
-        - Once your icon is finished, load it into any text editor and edit the above lines
-        - In the body of the file, change the references to FILL and STROKE within 
-          the attribute STYLE
+- /activity
+    - activity.info
+- activity.py
+- setup.py
+- README.md (this file)
+- README.html
 
 
-<h3>3.) activity.info</h3> 
+### Description of Project Files
 
-    - Contains all the file linkage that the OLPC XO needs to run your activity
-    - included code:
+As you would expect, each file serves a specific purpose.
 
-        [Activity]
-        name = (name of your activity)
-        bundle_id = example
-        icon = exampleicon
-        exec = sugar-activity exActivity.exampleActivity
-        show_launcher = yes
-        activity_version = 1
-        license = GPLv2+
+The `activity` folder stores meta-data about the activity.  This includes an `activity.info` file which describes the activity and how to execute it from the sugar desktop.  It also stores the activity display icon in SVG (XML Standard Vector Graphics) format.
 
-    Explanation:
-        name : The name of the activity as the user sees it
+The `setup.py` file aids with testing, building, and installing activities.  It does not change between activities.  It will help generate language files, symlink to your sugar activities for development.  It also packages the software into a compressed `.xo` file for distribution to other XO laptops.
 
-        bundle_id : A unique name that Sugar uses to refer to your activity. 
-                    The journal also stores this name in the metadata of your 
-                    activity entry, so you can resume this activity from the
-                    entry.
-
-        icon : The name of your icon. It must be an svg file.  example:
-               "myicon.svg"
-
-        exec : Tells Sugar how to launch your Activity. It tells sugar to
-               create an instance of the class exampleActivity which it finds
-               in the exampleActivity.py (filename.activityclass) 
-
-        show_launcher :  The first is to click on the icon in the Activity
-                         view. The second is to resume an entry in the journal.
-
-        activity_version : An integer that displays what iteration your
-                           activity is.
-
-        license : A license tells people what they can and can't do with a
-                  program. GPLv2+ is a popular standard license.
-
-    TroubleShooting:
-        - If your xo activity icon doesn't display correctly, the problem lies
-          within your activity.info file.
-        - Your icon should not have the .svg after the file name. You only need
-          the file name.
-        - If you are working on an older version of an activity, make sure that
-          the values are correctly named (class = exec, etc..)
-
-<h3>3.) setup.py file</h3>
-
-    - This file runs to build the .xo file that the OLPC needs to run.
-    - included code:
-        from sugar.activity import bundlebuilder
-        bundlebuilder.start()
+A commonly used name is `activity.py`, but you can technically call it whatever you like.  This is the name used most commonly by sugar activities.
 
 
-<h3>5.) activity directory</h3>
-    -This folder will hold your activity.info file and your icon.svg
+---
+
+#### setup.py
 
 
-<h1>How to build a sugar XO:</h1>
+This file is used to generate your po translation files, build/test your code, symlink it for development, and creating a compressed .xo package file.
 
-<h2>1.) Method 1:</h2>
+If you run it with no commands it will give you all available commands and a short description.
 
-    a.) In home/Activities/example, type:
+_It must be executable to be run._
 
-            ./setup.py dev
-        
-    b.) In home/Activities/example, type:
-    
-            /setup.py dist_xo
-        
-        
-    Explanation:
+It is two lines long:
 
-    a.) The activity needs to be installed. This method creates a symbolic link
-        within the OLPC.  A symbolic link is a way of make a directory or file
-        appear to be located in two places without having to copy it.
+    from sugar3.activity import bundlebuilder
+    bundlebuilder.start()
 
-    b.) This will create the xo file and place it in a new folder called dist
-        in the Activity directory
-    
-    
-<h2>2.) Method 2 (in linux):</h2>
+Example Commands:
 
-    a.) Open a terminal and navigate to your activity folder, type:
-        
-        python setup.py dev
-        
-    b.) Then type:
-        
-        python setup.py dist_xo
-        
-    c.) Pull .xo file out of the dist folder you just created and place it onto
-        a flash drive.
-    
-    d.) Copy the .xo file from the flash drive into the Journal of the OLPC
-            
-    
+    ./setup.py genpot
+    ./setup.py build
+    ./setup.py dev
+    ./setup.py dist_xo
 
-    Explanation:
-    a.) Same explanation as above.
-    b.) Creates a 'dist' folder containing the .xo file within your activity
-        folder.
-    c.) Instructions on how to get the .xo file onto the sugar OLPC
-    d.) The activity should now show up in the journal and on the home circle.
-    **NOTE: If your activity icon doesn't load correctly, there is something
-            wrong with your activity.info file. Please check to make sure each
-            of your values are complete and correct.
+
+#### activity/
+
+This folder contains your `activity.info` file used to launch your activity, as well as your SVG icon.
+
+
+#### activity/activity.info
+
+This file is used to define the icon used on the sugar desktop, and is responsible for executing the program when that icon is selected.
+
+Here is an example (included in the default files):
+
+    [Activity]
+    name = example
+    bundle_id = example.laptop.org
+    icon = exampleicon
+    exec = sugar-activity activity.Example
+    show_launcher = yes
+    activity_version = 1
+    license = GPLv2+
+
+Now to explain what each of these do:
+
+- name
+    - The name of the activity as seen by the user.
+- bundle_id
+    - Unique name used by sugar to refer to your activity, which may also be used in your code (such as accessing the journal).
+- icon
+    - The name of your SVG icon (automatically infers a `.svg` suffix, **do not include .svg**)
+- exec
+    - Used to launch your activity, specifying the type (`sugar-activity`), the file name, and the method to use to launch your program.
+- show_launcher
+    - Display the activity in the sugar activity panel
+- activity_version
+    - An integer representing the iteration of your activity (_cannot have decimals_)
+- license
+    - The license your software is under, explains to users their rights with regard to your software.
+    - GPL is a popular license, both 2 and 3 are commonly used.
+        - GPLv2+ means version 2 and newer applies.
+
+Troubleshooting:
+
+- If the icon fails to display, it is likely that the icon name in `activity.info` is invalid.
+    - Remember not to include the `.svg` suffix for the file.
+- If you are working on an older version of an activity, make sure the correct file and class names are used by `exec`.
+
+
+#### activity/activity.svg
+
+The icons are in SVG format (XML Standard Vector Graphics).  It is suggested that users create icons using [Inkscape](http://inkscape.org/), a wonderful free and open source vector graphics software.
+
+**Sugar recommends a 48x48 pixel size for its icons.**
+
+After creating an icon in Inkscape, some fine-tuning is advised:
+
+**Part One:**
+
+    Before:--------------------------------
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+    After:---------------------------------
+    <?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'
+    [<!ENTITY stroke_color "#000000">
+    <!ENTITY fill_color "#FFFFFF">]><svg
+
+**Part TWO:**
+
+    Before:--------------------------------
+    <rect
+    style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
+    id="rect904"
+    width="36.142857"
+    height="32.142857"
+    x="4.1428571"
+    y="7.1428571" />
+
+    After:---------------------------------
+    <rect
+    style="fill:&fill_color;;stroke:&stroke_color;;stroke-opacity:1"
+    id="rect904"
+    width="36.142857"
+    height="32.142857"
+    x="4.1428571"
+    y="7.1428571" />
+
+Saving these changes will set sugar colors for FILL and STROKE within the STYLE attribute.
+
+
+#### activity.py
+
+Activities are programmed in the [python programming language](http://www.python.org/).
+
+Activities extend the sugar library, which are classes, and therefore need to be designed around class structures.  Without extending the sugar components they will not be executed properly under the sugar environment.
+
+_Larger programs can be separated into multiple files and included as components._
+
+**Known Bug: Classes extending sugar components will not work outside the sugar desktop environment.**
+
+There are a few options for developing for, or testing outside the sugar desktop environment:
+
+1. Create a separate version of the software that does not extend sugar library, and merging changes to the sugar version once tests are successful.
+2. Create two versions of the top-level class and shared classes in separate files, executing one in sugar and the other for testing.
+
+
+## Building & Distributing
+
+There are two ways to install and test your software.  Both assume that an XO laptop or Sugar Desktop Environment (or Development Environment) are being used.
+
+1. Create a `.xo` file and distribute it to the XO laptop(s)
+
+To create a package run:
+
+    ./setup genpot
+    ./setup build
+    ./setup dist_xo
+
+The last command will generate a `dist/` folder with a `.xo` file inside it named after your activity.  This file is a compressed Sugar Package file which can be installed off a USB drive to other XO laptops.
+
+
+2. Create a symlink to the development activity using `./setup.py dev`
+
+A symlink only has to be created once, but you should run these two commands first (and preferably before each test run):
+
+    ./setup genpot
+    ./setup build
+
+**If your activity does not appear on the desktop after you have installed it, check the activity list, and check your `activity.info` file for invalid values.**
+
+
+## GTK and Interfaces
+
+Sugar has migrated to Gtk3, which uses GObject Introspection.
+
+While this sounds complex, what it means is that the new library of code describes itself, and is used to automatically generate 100% accurate documentation.  Unfortunately, this documentation is currently only written in C, so you may have to read C documentation to build with python Gtk3.
+
+This can be a bit tricky, but hopefully the tips here will help new developers going forward.
+
+First, sugar has changed the Gtk3 compatible import to sugar3, which means imports from the sugar libraries should have the sugar3 prefix.
+
+Second, all of the GObject libraries are imported through the `gi.repository` library.
+
+_Note: The sugar3.activity.Activity extends Gtk.Window, which means if you want to test a software outside sugar you can (mostly) swap in Gtk.Window where the class extends sugar3.activity.Activity._
+
+
+## Multi-Lingual Development
+
+When you run `./setup.py genpot` this parses your software for any strings wrapped with gettext, and generates a `.po` file.  This `.po` file can then be sent out for translation.
+
+    PENDING FURTHER INSTRUCTIONS
+
+
+## Example Activity
+
+The `activity.py` has been populated with some basic content as a demonstration.
+
+Move these files to a Sugar Desktop Environment, and run these commands:
+
+    ./setup.py genpot
+    ./setup.py build
+    ./setup.py dev
+
+The icon should appear on the sugar desktop, or in the activities list, and be available for testing.
