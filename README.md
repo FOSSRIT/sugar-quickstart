@@ -22,11 +22,11 @@ A basic bare-minimum Sugar Activity will consist of these files:
 
 - activity/
     - activity.info
-    - activity-icon.svg
+    - icon.svg
 - activity.py
 - setup.py
 
-_This activity does not include an `activity-icon.svg`.  You must build (or extend) the `activity.py` file.  Changes to the `activity.py` file must be accomodated by changes to the `activity.info`.  You will use the `setup.py` file to create a `.xo` file later._
+_This activity includes an empty icon named `exampleicon.svg`.  It is advised that you create your own icon.  You must build (or extend) the `activity.py` file.  Changes to the `activity.py` file must be accomodated by changes to the `activity.info`.  You will use the `setup.py` file to create a `.xo` file later._
 
 
 ### Included in This QuickStart
