@@ -1,8 +1,8 @@
 [Activity]
-name = (name of your activity)
-bundle_id = example
+name = example
+bundle_id = example.laptop.org
 icon = exampleicon
-exec = sugar-activity exActivity.exampleActivity
+exec = sugar-activity activity.Example
 show_launcher = yes
 activity_version = 1
 license = GPLv2+
