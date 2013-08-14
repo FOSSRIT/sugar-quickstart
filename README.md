@@ -207,15 +207,55 @@ A symlink only has to be created once, but you should run these two commands fir
 
 Sugar has migrated to Gtk3, which uses GObject Introspection.
 
-While this sounds complex, what it means is that the new library of code describes itself, and is used to automatically generate 100% accurate documentation.  Unfortunately, this documentation is currently only written in C, so you may have to read C documentation to build with python Gtk3.
+Introspection gives objects the ability to describe themselves, and this means new code can automatically generate accurate documentation at build time.  This means no manual documentation is needed, and no human errors exist in documentation that do not exist in the code.
 
-This can be a bit tricky, but hopefully the tips here will help new developers going forward.
+Unfortunately since the source is written in C, the documentation is also for the C libraries.  Translating from C to the python API is a bit of a chore, so this section is here to help.
 
-First, sugar has changed the Gtk3 compatible import to sugar3, which means imports from the sugar libraries should have the sugar3 prefix.
+Let's start with some helpful reference sites:
+
+- [Python Gtk3 Examples](http://python-gtk-3-tutorial.readthedocs.org/en/latest/)
+- [Gtk3 Documentation](https://developer.gnome.org/gtk3/3.0/)
+
+The examples are not complete or comprehensive, but they explain a large portion of commonly used elements and are a good place to start if you are beginning.  The documentation is in C, but translating from the C documentation to python is very strait forward, as it has its own rules.
+
+You can also make life easier using a python interpreter such as [bpython](http://bpython-interpreter.org/) which uses the introspection to provide auto-complete options.  This can be of great help when you are unsure as to a method name, since you can get a list of names automatically.  You can install bpython from yum (or aptitude).
+
+The first major change, any time you see a sugar import it should be `sugar3`, as this is the new library that uses Gtk3 elements.
 
 Second, all of the GObject libraries are imported through the `gi.repository` library.
 
 _Note: The sugar3.activity.Activity extends Gtk.Window, which means if you want to test a software outside sugar you can (mostly) swap in Gtk.Window where the class extends sugar3.activity.Activity._
+
+Now to guide you through reading Gtk3 documentation, remembering that our goal is to translate from C to Python.
+
+The documentation prefixes all elements with Gtk, for example GtkWindow in the documentation.  This is a `Gtk.Window()` object in python.
+
+If you go to the [GtkWindow](https://developer.gnome.org/gtk3/3.0/GtkWindow.html) documentation, you will see a menu at the top of the page.  Important sections include:
+
+- Object Hierarchy
+- Properties
+- Signals
+
+The others are still valuable, and it starts by providing the list of methods available, but these three are the ones we really want to pay attention to.
+
+Gtk elements extend from GObject, and each layer inherits the parents properties chained upstream.  This means GtkWindow also has all of the properties, methods, and signals that belong to GtkBin, which means it also gets the same from GtkContainer, up to GtkWidget, and so on.
+
+This is important, because you will often be searching for a signal or property that may not exist on the child, but belongs to the parent.  So your first lookout: **If you cannot find a property, method, or signal on the element, check its parent elements**.
+
+As for the methods, the C naming style accepts the element as the first argument, they do not chain off the element as seen in other languages.  So when you see a method such as `gtk_window_set_title` what that becomes in python is `set_title`, and you would use it as follows:
+
+    window = Gtk.Window()
+    window.set_title("A Title")
+
+Alternatively, if you check the properties you will see `title` is a property, and you can set them on initialization like this instead:
+
+    window = Gtk.Window(title="A Title")
+
+Which will produce the same window as in the first example.  Now for your second lookout: **Properties with a hyphen (-) become an underscore.**  If you convert hyphens to underscores you can set the properties in the constructor in python.
+
+The final stage is the signals.  Signals are fired and can be connected to methods, this is the event handling of C and Python.  For example, you can have a method run to scale fonts in the GtkWindow using the `check-resize` signal, which actually belongs to [GtkContainer](https://developer.gnome.org/gtk3/3.0/GtkContainer.html#GtkContainer.signals), a parent property (_First Lookout_).
+
+This is about all the major bumps in the road you can expect to run into, just remember to watch out for parent elements, and conversion rules for properties and methods and you should have an easy time of developing in Gtk3 for Python.
 
 
 ## Multi-Lingual Development
