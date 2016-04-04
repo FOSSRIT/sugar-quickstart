@@ -74,6 +74,7 @@ Example Commands:
     ./setup.py dist_xo
 
 
+
 #### activity/
 
 This folder contains your `activity.info` file used to launch your activity, as well as your SVG icon.
@@ -200,7 +201,7 @@ A symlink only has to be created once, but you should run these two commands fir
     ./setup genpot
     ./setup build
 
-**If your activity does not appear on the desktop after you have installed it, check the activity list, and check your `activity.info` file for invalid values.**
+**If your activity does not appear on the desktop after you have installed it, logout, log back in and then check the activity list, and check your `activity.info` file for invalid values.**
 
 
 ## GTK and Interfaces
